@@ -1,0 +1,95 @@
+@import "vars";
+
+.my-map-drawer {
+  transition: transform 0.2s;
+  border-radius: 0;
+
+  .my-resize {
+    overflow: visible;
+  }
+
+  &.is-collapsed {
+    &.is-placement-left {
+      transform: translate(-100%, -50%);
+    }
+
+    &.is-placement-right {
+      transform: translate(100%, -50%);
+    }
+
+    &.is-placement-top {
+      transform: translate(-50%, -100%);
+    }
+
+    &.is-placement-bottom {
+      transform: translate(-50%, 100%);
+    }
+  }
+
+  &__switch {
+    position: absolute;
+    background: $--title-background-color-light;
+    text-align: center;
+    cursor: pointer;
+    color: $--title-color-light;
+
+    &.is-dark {
+      background: $--title-background-color-dark;
+      color: $--title-color-dark;
+    }
+
+    &:hover {
+      opacity: 0.9;
+      color: $--primary-color;
+    }
+
+
+    &.is-left {
+      width: 20px;
+      height: 100px;
+      line-height: 100px;
+      right: -20px;
+      top: 50%;
+      transform: translateY(-50%);
+      border: 1px solid rgba(0, 0, 0, 0.1);
+      border-left: none;
+      border-radius: 0 2px 2px 0;
+    }
+
+    &.is-right {
+      width: 20px;
+      height: 100px;
+      line-height: 100px;
+      left: -20px;
+      top: 50%;
+      transform: translateY(-50%);
+      border: 1px solid rgba(0, 0, 0, 0.1);
+      border-right: none;
+      border-radius: 2px 0 0 2px;
+    }
+
+    &.is-top {
+      width: 100px;
+      height: 20px;
+      line-height: 20px;
+      bottom: -24px;
+      left: 50%;
+      transform: translateX(-50%);
+      border: 1px solid rgba(0, 0, 0, 0.1);
+      border-top: none;
+      border-radius: 0 0 2px 2px;
+    }
+
+    &.is-bottom {
+      width: 100px;
+      height: 20px;
+      line-height: 20px;
+      top: -20px;
+      left: 50%;
+      transform: translateX(-50%);
+      border: 1px solid rgba(0, 0, 0, 0.1);
+      border-bottom: none;
+      border-radius: 2px 2px 0 0;
+    }
+  }
+}

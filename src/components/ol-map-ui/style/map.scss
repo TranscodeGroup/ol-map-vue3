@@ -1,0 +1,14 @@
+@import "vars";
+
+.my-map {
+  position: relative;
+  overflow: hidden;
+
+}
+
+.my-map--invert {
+  .ol-viewport {
+    filter: brightness(0.83) contrast(0.93) grayscale(0) hue-rotate(0deg) opacity(1) saturate(0.99) sepia(1) invert(1);
+  }
+}
+

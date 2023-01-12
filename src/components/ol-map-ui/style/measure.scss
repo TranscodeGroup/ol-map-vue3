@@ -1,0 +1,46 @@
+@import "vars";
+
+.my-map-measure {
+  &__help, &__tip {
+    background: $--background-color-light;
+    border-radius: $--border-radius;
+    color: $--text-color-light;
+    box-shadow: $--shadow-base;
+    font-size: 12px;
+    padding: 5px 8px;
+
+    &.is-dark {
+      background: $--background-color-dark;
+      color: $--text-color-dark;
+    }
+  }
+
+  &__tip {
+    &:before {
+      border-top: 6px solid $--background-color-light;
+      border-right: 6px solid transparent;
+      border-left: 6px solid transparent;
+      content: "";
+      position: absolute;
+      bottom: -6px;
+      margin-left: -7px;
+      left: 50%;
+    }
+
+    &.is-dark {
+      &:before {
+        border-top: 6px solid $--background-color-dark;
+      }
+    }
+  }
+
+  &__delete {
+    color: $--warning-color;
+    margin-left: 10px;
+    cursor: pointer;
+
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+}

@@ -1,0 +1,17 @@
+@import "vars";
+
+.my-map-pointer {
+  &__inner {
+    padding: 5px 8px;
+
+    i {
+      color: $--primary-color;
+      margin-left: 8px;
+      cursor: pointer;
+
+      &:hover {
+        opacity: 0.7;
+      }
+    }
+  }
+}

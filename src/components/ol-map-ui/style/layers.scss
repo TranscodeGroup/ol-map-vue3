@@ -1,0 +1,57 @@
+@import "vars";
+
+.my-map-layers {
+  padding: 4px;
+  transition: all 0.3s;
+  display: flex;
+  &:hover {
+    box-shadow: 0 0 10px rgba(0, 0, 0, .3);
+  }
+
+  img {
+    border-radius: 2px;
+    display: block;
+  }
+
+  &__item {
+    display: inline-block;
+    font-size: 14px;
+    position: relative;
+    margin: 3px;
+    border: 2px solid $--border-color-base;
+    cursor: pointer;
+    border-radius: 2px;
+
+    .my-map-layers__title {
+      background: $--border-color-base;
+      color: $--title-color-light;
+      border-radius: 2px 0 0 0;
+    }
+
+    &.active {
+      border-color: $--primary-color;
+
+      .my-map-layers__title {
+        background: $--primary-color;
+        color: $--title-color-dark;
+      }
+    }
+
+    &:hover {
+      border-color: $--primary-color;
+
+      .my-map-layers__title {
+        background: $--primary-color;
+        color: $--title-color-dark;
+      }
+    }
+  }
+
+  &__title {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    padding: 1px 4px;
+    color: $--title-color-light;
+  }
+}

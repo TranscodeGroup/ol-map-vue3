@@ -1,0 +1,99 @@
+@import "vars";
+
+
+.my-map-panel {
+  &.my-drag {
+    &.is-dragged {
+      transform: initial;
+    }
+
+    &:not(.is-disabled) {
+      right: initial;
+      bottom: initial;
+    }
+  }
+
+  .my-resize {
+    overflow: hidden;
+  }
+
+  &__header {
+    height: 40px;
+    padding: 0 14px;
+    position: relative;
+  }
+
+  &__title {
+    font-size: 16px;
+    line-height: 40px;
+
+    > .my-icon {
+      margin-right: 6px;
+    }
+  }
+
+  &__close {
+    font-size: 18px;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+
+    &:hover {
+      opacity: 0.7;
+    }
+  }
+
+  &__toolbar {
+    position: absolute;
+    right: 10px;
+    top: 5px;
+
+    &.is-closable {
+      right: 35px;
+    }
+  }
+
+  &__body {
+    padding: 10px 16px;
+    height: calc(100% - 40px);
+    overflow: auto;
+  }
+
+  &__footer {
+    padding: 10px 10px 5px 10px;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+
+    &.is-right {
+      text-align: right;
+    }
+
+    &.is-center {
+      text-align: center;
+    }
+  }
+
+  &.is-light {
+    .my-map-panel__header {
+      background: $--title-background-color-light;
+      color: $--title-color-light;
+    }
+
+    .my-map-panel__footer {
+      border-top: 1px solid $--title-background-color-light;
+    }
+  }
+
+  &.is-dark {
+    .my-map-panel__header {
+      background: $--title-background-color-dark;
+      color: $--title-color-dark;
+    }
+
+    .my-map-panel__footer {
+      border-top: 1px solid $--title-background-color-dark;
+    }
+  }
+}

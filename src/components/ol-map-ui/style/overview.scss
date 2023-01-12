@@ -1,0 +1,54 @@
+@import './_vars.scss';
+
+.my-map-overview {
+  background: transparent !important;
+  padding: 0 !important;
+
+  button {
+    background-color: $--background-color-light !important;
+    color: $--text-color-light !important;
+    box-shadow: $--shadow-base;
+    cursor: pointer;
+    outline: none;
+    border-radius: $--border-radius !important;
+
+    span {
+      position: relative;
+      top: -1px;
+    }
+
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+
+  .ol-overviewmap-map {
+    background-color: $--background-color-light !important;
+    box-shadow: $--shadow-base;
+    padding: 4px;
+    border: none !important;
+    border-radius: $--border-radius !important;
+  }
+
+  &:not(.ol-collapsed) button {
+    bottom: 1px !important;
+    left: 1px !important;
+  }
+
+  &.is-dark {
+    button {
+      background-color: $--background-color-dark !important;
+      color: $--text-color-dark !important;
+    }
+
+    .ol-overviewmap-map {
+      background-color: $--background-color-dark !important;
+    }
+  }
+}
+
+.my-map-overview--invert {
+  .ol-viewport {
+    filter: invert(0.9) brightness(1.2) hue-rotate(90deg);
+  }
+}

@@ -1,0 +1,16 @@
+.my-map-palette {
+  .el-button {
+    margin-left: 10px;
+  }
+  &__item {
+    padding: 0 10px 0 0;
+
+    .el-slider {
+      margin-left: 10px;
+    }
+
+    .el-slider__runway {
+      margin: 8px 0 16px 0;
+    }
+  }
+}

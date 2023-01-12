@@ -1,0 +1,82 @@
+@import "vars";
+
+.my-map-popup {
+  font-size: 14px;
+  position: relative;
+  min-width: 120px;
+  background: $--background-color-light;
+  color: $--text-color-light;
+  box-shadow: 0 0 8px 0 rgba(0, 0, 0, .5);
+  border-radius: 2px;
+  height: 100%;
+
+  &.arrow::after, &.arrow::before {
+    content: "";
+    font-size: 0;
+    width: 0;
+    height: 0;
+    border: 8px solid transparent;
+    border-top: 12px solid $--background-color-light;
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    transform: translate(-50%, 100%);
+  }
+
+  &.arrow::before {
+    border: 9px solid transparent;
+    border-top: 13px solid rgba(50, 50, 50, .3);
+  }
+
+  &__title {
+    height: 36px;
+    background: $--title-background-color-light;
+    color: $--title-color-light;
+    line-height: 36px;
+    border-radius: 2px 2px 0 0;
+    padding: 0 10px;
+  }
+
+  &__body {
+    padding: 5px 10px 10px 10px;
+  }
+
+  &__close {
+    background-size: contain;
+    width: 30px;
+    height: 30px;
+    display: inline-block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    opacity: 0.7;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 16px;
+    text-align: center;
+    line-height: 36px;
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+
+  &.is-dark {
+    background: $--background-color-dark;
+    color: $--text-color-dark;
+
+    .my-map-popup__title {
+      background: $--title-background-color-dark;
+      color: $--title-color-dark;
+    }
+
+    &.arrow::after, &.errow::before {
+      border-top: 12px solid rgba(0, 0, 0, .7);
+    }
+
+    &.arrow::before {
+      border-top: 13px solid rgba(50, 50, 50, .3);
+    }
+  }
+
+}

@@ -1,0 +1,74 @@
+@import "vars";
+
+@mixin zoom-theme($wrapper, $background, $color) {
+  &.ol-control {
+    background-color: $wrapper;
+  }
+
+  &.ol-zoom-in, &.ol-zoom-out {
+    cursor: pointer;
+    background-color: $background;
+    color: $color;
+    outline: none;
+
+    &:hover {
+      opacity: 0.7;
+    }
+  }
+
+  &.ol-zoomslider-thumb {
+    background-color: $background;
+    outline: none;
+    cursor: move;
+
+    &:hover {
+      opacity: 0.7;
+    }
+  }
+}
+
+.my-map-zoom {
+  &.is-light {
+    @include zoom-theme(rgba(0, 0, 0, 0.1), $--background-color-light, $--text-color-light);
+  }
+
+  &.is-dark {
+    @include zoom-theme(rgba(255, 255, 255, 0.2), $--background-color-dark, $--text-color-dark);
+  }
+
+  &.is-right-top {
+    &.ol-zoom, &.ol-zoomslider {
+      left: initial;
+      right: 0.5em;
+    }
+  }
+
+  &.is-left-bottom {
+    &.ol-zoom {
+      top: initial;
+      bottom: 0.5em;
+    }
+
+    &.ol-zoomslider {
+      top: initial;
+      bottom: 4.5em;
+    }
+  }
+
+  &.is-right-bottom {
+    &.ol-zoom {
+      top: initial;
+      bottom: 0.5em;
+      left: initial;
+      right: 0.5em;
+    }
+
+    &.ol-zoomslider {
+      top: initial;
+      bottom: 4.5em;
+      left: initial;
+      right: 0.5em;
+    }
+  }
+
+}

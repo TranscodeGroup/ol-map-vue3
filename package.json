@@ -1,6 +1,6 @@
 {
   "name": "ol-map-vue3",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "description": "Vue3基于openLayers封装的地图组件库",
   "private": false,
   "scripts": {

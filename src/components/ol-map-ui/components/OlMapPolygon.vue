@@ -36,7 +36,7 @@ const draw = () => {
   feature = new Feature({ geometry })
   // feature.__vm__ = this
   feature.setProperties({ ...props }) // 绑定属性
-  myMap.addFeature(feature)
+  myMap?.addFeature(feature)
   setStyle()
   emit('feature-draw')
 }
@@ -69,7 +69,6 @@ const setStyle = () => {
  * @method modify
  */
 const modify = () => {
-  console.log('this.feature :>> ', feature);
   if (!feature) {
     draw()
     return
@@ -82,7 +81,7 @@ const modify = () => {
 
 onMounted(() => {
   setTimeout(() => {
-    myMap.mapReady(draw)
+    myMap?.mapReady(draw)
     modify()
   }, 1000)
 })
@@ -91,7 +90,7 @@ onUnmounted(() => {
   if (feature) {
     // feature.__vm__ = null
     feature.dispose()
-    myMap.removeFeature(feature)
+    myMap?.removeFeature(feature)
   }
 });
 

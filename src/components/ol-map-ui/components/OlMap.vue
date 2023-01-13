@@ -1,26 +1,10 @@
 <script lang="ts">
-// 声明额外的选项
+// 声明额外的选项 组件名称
 export default {
   name: 'OlMap',
 }
 </script>
 <script setup lang="ts">
-export interface Props {
-  zoom?: number
-  minZoom?: number
-  maxZoom?: number
-  center?: number[]
-  adapter?: string | object | Function
-  projection?: string
-  width?: string
-  height?: string
-  dragPan?: boolean
-  mouseWheelZoom?: boolean
-  mapOptions?: object
-  viewOptions?: object
-  invert?: boolean
-  filter?: object
-}
 /**
  * 地图基础图层组件
  *
@@ -33,84 +17,18 @@ import PointerInteraction from 'ol/interaction/Pointer'
 import VectorLayer from 'ol/layer/Vector'
 import VectorSource from 'ol/source/Vector'
 import { createLayer } from '../utils/layer'
-import { onMounted, onBeforeUnmount, computed, watch, inject, provide, type PropType } from 'vue'
+import { onMounted, onBeforeUnmount, computed, watch, inject, provide } from 'vue'
 import type MapBrowserEvent from 'ol/MapBrowserEvent';
 import type { Pixel } from 'ol/pixel'
 import type { FeatureLike } from 'ol/Feature'
+import { mapProps } from '../types/map';
 
 import '../style/map.scss'
 
 const emit = defineEmits(['mouseenter', 'mouseleave', 'ready', 'view-size-change'])
 
 
-const props = withDefaults(defineProps<Props>(), {
-  // 初始化缩放层级
-  zoom: 10,
-  minZoom: 1,
-  maxZoom: 20,
-  center: () => [113.261999, 23.130592],
-  adapter: 'Amap',
-  projection: 'EPSG:4326',
-  width: '100%',
-  height: '400px',
-  DragPan: true,
-  mouseWheelZoom: true,
-  // zoom: {
-  //   type: Number,
-  //   default: 10,
-  // },
-  // minZoom: {
-  //   type: Number,
-  //   default: 1,
-  // },
-  // maxZoom: {
-  //   type: Number,
-  //   default: 20,
-  // },
-  // 初始化中心经纬度
-  // center: {
-  //   type: Array as PropType<number[]>,
-  //   default() {
-  //     return [113.261999, 23.130592]
-  //   },
-  // },
-  // // 图层适配器, {id,type, url, layers(天地图专用)}
-  // adapter: {
-  //   type: [String, Object, Function],
-  //   default: 'Baidu',
-  // },
-  // // 投影标准
-  // projection: {
-  //   type: String,
-  //   default: 'EPSG:4326',
-  // },
-  // width: {
-  //   type: String,
-  //   default: '100%',
-  // },
-  // height: {
-  //   type: String,
-  //   default: '400px',
-  // },
-  // // 可拖拽移动图层
-  // dragPan: {
-  //   type: Boolean,
-  //   default: true,
-  // },
-  // // 鼠标滚轮可缩放图层
-  // mouseWheelZoom: {
-  //   type: Boolean,
-  //   default: true,
-  // },
-  // // ol/Map 实例化参数选项
-  // mapOptions: Object,
-  // // ol/View 实例化参数选项
-  // viewOptions: Object,
-  // // 颜色反相
-  // invert: Boolean,
-  // // 滤镜
-  // filter: Object,
-})
+const props = defineProps(mapProps)
 
 let cursor = $ref(null)
 let viewWidth = $ref(0)
@@ -334,7 +252,7 @@ const init = () => {
    * @param {Map} map ol/Map实例
    * @param {VueComponent} vm Vue实例
    */
-  emit('ready', map, this)
+  // emit('ready', map, this)
 
   setCanvasFilter()
 }
@@ -352,11 +270,8 @@ watch(
   () => {
     dispose()
     init()
-    resize()
   }
 )
-
-
 
 onMounted(() => {
   init()
@@ -531,21 +446,25 @@ const clear = () => {
 
 }
 
+const getMap = () => {
+  return map
+}
+
 provide('myMap', {
+  getMap,
   mapReady,
   addFeature,
   removeFeature,
   getMetersPerUnit,
-  setViewSize,
   clear,
 })
 
 defineExpose({
+  getMap,
   mapReady,
   addFeature,
   removeFeature,
   getMetersPerUnit,
-  setViewSize,
   clear,
 })
 </script>

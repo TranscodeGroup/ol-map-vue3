@@ -1,13 +1,22 @@
 {
   "name": "ol-map-vue3",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "description": "Vue3基于openLayers封装的地图组件库",
   "main": "ol-map-vue3.mjs",
   "types": "src/components/ol-map-ui/index.d.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": ["Vue3", "openLayers", "map"],
+  "keywords": [
+    "Vue3",
+    "openLayers",
+    "map"
+  ],
   "author": "Splendor Jiang",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/TranscodeGroup/ol-map-vue3"
+  },
+  "homepage": "https://github.com/TranscodeGroup/ol-map-vue3",
   "license": "MIT"
 }

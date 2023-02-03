@@ -183,6 +183,27 @@ function createFcMapLayer(settings) {
   })
 }
 
+// 微软Bing地图计算切片编号
+const quadKey = (tileCoord) => {
+  const z = tileCoord[0]
+  const digits = new Array(z)
+  let mask = 1 << (z - 1)
+  let i, charCode
+  for (i = 0; i < z; ++i) {
+    // 48 is charCode for 0 - '0'.charCodeAt(0)
+    charCode = 48
+    if (tileCoord[1] & mask)
+      charCode += 1
+
+    if (tileCoord[2] & mask)
+      charCode += 2
+
+    digits[i] = String.fromCharCode(charCode)
+    mask >>= 1
+  }
+  return digits.join('')
+}
+
 /**
  * 适配图层加载
  * @param {string|object|function} adapter 适配器 object: {id, type, url, layers}
@@ -247,6 +268,17 @@ export function createLayer(adapter, opts = {}) {
         layers: ['vec_c', 'vec_w', 'cva_w', 'ibo_w'],
         ...settings,
       })
+    // 微软Bing
+    case 'Bing':
+        return new TileLayer({
+          ...opts,
+          source: new XYZ({
+          tileUrlFunction(tileCoord) {
+            return `http://r1.tiles.ditu.live.com/tiles/r${quadKey(tileCoord)}.png?g=100&mkt=zh-cn` // bing
+          },
+            ...settings,
+          }),
+        })
     case 'Google':
       return new TileLayer({
         ...opts,
